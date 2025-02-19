@@ -6,7 +6,7 @@
 /*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:34:37 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/18 16:51:00 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:30:23 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ typedef struct	s_word
 }	t_word;
 
 void	ft_free_tab(char **str);
-char	**check_type(t_word *node);
 char	**ft_split_operator(char const *s);
+int	check_quote(char *str);
 #endif

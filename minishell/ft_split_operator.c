@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_split.c                                       :+:      :+:    :+:   */
+/*   ft_split_operator.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:48:30 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/18 15:58:04 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:49:36 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
+
 static int	ft_count_word(char *s)
 {
 	int	i;
 	int	count;
+	int	in_quotes;
 
+	in_quotes = 0;
 	i = 0;
 	count = 0;
 	while (s[i])
 	{
-		while ((s[i] == '|' || s[i] == '<' || s[i] == '>' || s[i] == '\'' || s[i] == '\"') && s[i])
+		while ((s[i] == '\t' || s[i] == '\n' || s[i] == ' ') && s[i] && !in_quotes)
 			i++;
 		if (s[i])
 		{
-			count++;
-			while ((s[i] != '|' || s[i] != '<' || s[i] != '>' || s[i] != '\'' || s[i] != '\"') && s[i])
+			if (s[i] == '"')
+			{
+				in_quotes = 1;
 				i++;
+			}
+			count++;
+			while (s[i] && ((s[i] != '\n' && s[i] != '\t' && s[i] != ' ' && !in_quotes) || (in_quotes && s[i] != '"')))
+				i++;
+			if (s[i] == '"')
+			{
+				in_quotes = 0;
+				i++;
+			}
 		}
 	}
 	return (count);
@@ -36,9 +49,20 @@ static int	ft_count_word(char *s)
 static int	ft_count_letter(char *s)
 {
 	int	len;
+	int	in_quotes;
 
+	in_quotes = 0;
 	len = 0;
-	while (s[len] && (s[len] != '|' || s[len] != '<' || s[len] != '>' || s[len] != '\'' || s[len] != '\"'))
+	if (s[len] == '"')
+	{
+		len++;
+		while  (s[len] && s[len] != '"')
+			len++;
+		if (s[len] == '"')
+			len++;
+		return (len);
+	}
+	while (s[len] && (s[len] != ' ' && s[len] != '\n' && s[len] != '\t'))
 		len++;
 	return (len);
 }
@@ -66,6 +90,7 @@ char	**ft_split_operator(char const *s)
 	char	**dest;
 	int		i;
 	int		len;
+	int	in_quotes;
 
 	len = 0;
 	i = 0;
@@ -76,7 +101,9 @@ char	**ft_split_operator(char const *s)
 		return (NULL);
 	while (*s)
 	{
-		if (*s != '|' || *s != '<' || *s != '>' || *s != '\'' || *s != '\"')
+		if (*s == '"')
+			in_quotes = 1;
+		if ((*s != '\n' && *s != '\t' && *s != ' ') && in_quotes)
 		{
 			len = ft_count_letter((char *)s);
 			if (!ft_fill(dest, i++, len, s))

@@ -1,11 +1,12 @@
 SRCS = 	main.c\
 		free.c\
 		ft_split_operator.c\
+		utils.c\
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -lreadline
 LIBFT = libft/libft.a
 
