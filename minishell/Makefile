@@ -1,6 +1,6 @@
 SRCS = 	main.c\
 		free.c\
-		ft_split_operator.c\
+		./parsing/ft_split_operator.c\
 		utils.c\
 
 OBJS = $(SRCS:.c=.o)

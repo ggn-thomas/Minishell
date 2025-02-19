@@ -6,11 +6,11 @@
 /*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:48:30 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/19 17:49:36 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:53:36 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
 
 static int	ft_count_word(char *s)
