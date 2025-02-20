@@ -6,7 +6,7 @@
 /*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:26:39 by thgaugai          #+#    #+#             */
-/*   Updated: 2024/12/03 10:19:48 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:38:53 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char				*ft_strncpy(char *dest, char *src, unsigned int n);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -51,6 +52,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 char				**ft_split(char const *s, char c);
+char				*ft_strndup(const char *s, int n);
 
 typedef struct s_list
 {
