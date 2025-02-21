@@ -6,7 +6,7 @@
 /*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:34:37 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/20 14:39:17 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:04:04 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,31 @@
 #include <readline/history.h>
 #include <stdbool.h>
 #include "../libft/libft.h"
-/*
+
 typedef enum s_mode
 {
-	word,
-	pipe,
-	r_input,
-	r_ouput,
-	echo,
-	cd,
-	pwd,
-	eexport,
-	unset,
-	env,
-	exit,
-	single_q,
-	double_q,
-	env_var,
-}	t_mode;*/
-
+	WORD,
+	PIPE,
+	R_INPUT,
+	R_OUPUT,
+	ECHO,
+	CD,
+	PWD,
+	EEXPORT,
+	UNSET,
+	ENV,
+	EXIT,
+	SINGLE_Q,
+	DOUBLE_Q,
+	ENV_VAR,
+}	t_mode;
 
 typedef struct	s_line
 {
 	char	*data;
+	t_mode	mode;
+	struct s_line	*outfile;
+	struct s_line	*infile;
 	struct s_line	*next;
 	struct s_line	*prev;
 }	t_line;

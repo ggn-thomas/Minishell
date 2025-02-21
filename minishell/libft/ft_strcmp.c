@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thgaugai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 13:49:39 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/20 15:06:19 by thgaugai         ###   ########.fr       */
+/*   Created: 2024/07/15 13:35:52 by thgaugai          #+#    #+#             */
+/*   Updated: 2024/07/17 13:20:54 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "libft.h"
 
-int	main(int ac, char **av, char **env)
+int	ft_strcmp(char *s1, char *s2)
 {
+	int	i ;
 
-	(void)ac;
-	(void)av;
-	(void)env;
-	char	*rl;
-
-	while (1)
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
 	{
-		rl = readline("-> bash> ");
-		tokenisation(rl);
-		add_history(rl);
-		free(rl);
+		i++;
 	}
-	return (0);
+	return (s1[i] - s2[i]);
 }
