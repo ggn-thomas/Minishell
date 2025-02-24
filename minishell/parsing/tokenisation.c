@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenisation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:57:14 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/21 13:01:41 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/24 16:20:50 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,41 +37,36 @@ static void	create_list(char **tab_line, t_line **list_token)
 			had_token_in_list(tab_line[i], list_token);
 		i++;
 	}
+	ft_free_tab(tab_line);
 }
-static void	check_type(t_line **list_token)
+
+void	check_type(t_line *list_token)
 {
-	t_line	*index;
-
-	index = *list_token;
-	while (index)
-	{
-		if (ft_strcmp(index->data, "cd") == 0)
-			index->mode = CD;
-		else if (ft_strcmp(index->data, "|") == 0)
-			index->mode = PIPE;
-		else if (ft_strcmp(index->data, ">") == 0)
-			index->mode = R_INPUT;
-		else if (ft_strcmp(index->data, "<") == 0)
-			index->mode = R_OUPUT;
-		else if (ft_strcmp(index->data, "echo") == 0)
-			index->mode = ECHO;
-		else if (ft_strcmp(index->data, "export") == 0)
-			index->mode = EEXPORT;
-		else if (ft_strcmp(index->data, "unset") == 0)
-			index->mode = UNSET;
-		else if (ft_strcmp(index->data, "env") == 0)
-			index->mode = ENV;
-		else if (ft_strcmp(index->data, "pwd") == 0)
-			index->mode = PWD;
-		else if (ft_strcmp(index->data, "exit"))
-			index->mode = EXIT;
-		else
-			index->mode = WORD;
-		index = index->next;
-	}
+	if (ft_strcmp(list_token->data, "cd") == 0)
+		list_token->mode = CD;
+	else if (ft_strcmp(list_token->data, "|") == 0)
+		list_token->mode = PIPE;
+	else if (ft_strcmp(list_token->data, ">") == 0)
+		list_token->mode = R_INPUT;
+	else if (ft_strcmp(list_token->data, "<") == 0)
+		list_token->mode = R_OUPUT;
+	else if (ft_strcmp(list_token->data, "echo") == 0)
+		list_token->mode = ECHO;
+	else if (ft_strcmp(list_token->data, "export") == 0)
+		list_token->mode = EEXPORT;
+	else if (ft_strcmp(list_token->data, "unset") == 0)
+		list_token->mode = UNSET;
+	else if (ft_strcmp(list_token->data, "env") == 0)
+		list_token->mode = ENV;
+	else if (ft_strcmp(list_token->data, "pwd") == 0)
+		list_token->mode = PWD;
+	else if (ft_strcmp(list_token->data, "exit"))
+		list_token->mode = EXIT;
+	else
+		list_token->mode = WORD;
 }
 
-void	tokenisation(char *line)
+int	tokenisation(char *line)
 {
 	t_line	**list_token;
 	char	**tab_line;
@@ -80,8 +75,9 @@ void	tokenisation(char *line)
 	*list_token = NULL;
 	tab_line = ft_split_operator(line);
 	if (!tab_line)
-		return ;
+		return (0);
 	create_list(tab_line, list_token);
-	check_type(list_token);
-	ft_print_list(list_token);
+	//check_quotes(list_token);
+	ft_print_list(list_token);// temporaire
+	return (1);
 }

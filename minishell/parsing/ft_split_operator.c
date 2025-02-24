@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_operator.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:48:30 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/19 17:53:36 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/24 08:33:13 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ static int	ft_count_word(char *s)
 static int	ft_count_letter(char *s)
 {
 	int	len;
-	int	in_quotes;
 
-	in_quotes = 0;
 	len = 0;
 	if (s[len] == '"')
 	{

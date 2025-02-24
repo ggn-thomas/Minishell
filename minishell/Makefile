@@ -3,6 +3,9 @@ SRCS = 	main.c\
 		./parsing/tokenisation.c\
 		./parsing/utils_parsing.c\
 		./parsing/check_operator_glued.c\
+		./parsing/check_syntax.c\
+		./parsing/signal_handler.c\
+		free.c\
 		utils.c\
 
 OBJS = $(SRCS:.c=.o)

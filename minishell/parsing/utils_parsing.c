@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:10:38 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/02/20 14:41:03 by thgaugai         ###   ########.fr       */
+/*   Updated: 2025/02/24 08:24:48 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	had_token_in_list(char *tab_line, t_line **list_token)
 	t_line	*tmp;
 
 	tmp = ft_new_node(tab_line);
+	check_type(tmp);
 	ft_lst_add_back(list_token, tmp);
 }
 
